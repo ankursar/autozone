@@ -1,0 +1,30 @@
+# Terraform Module: Create 1000 Google Pub/Sub Topics
+
+This Terraform module allows you to create 1000 Google Cloud Pub/Sub topics in a specified project.
+
+## Prerequisites
+
+Before using this module, ensure you have the following:
+
+- Terraform installed (version 0.12 or later)
+- Google Cloud Platform (GCP) account with appropriate permissions
+- Google Cloud SDK installed and authenticated
+
+## Usage
+
+1. Clone the repository or copy the contents of the module to your Terraform configuration directory.
+
+2. Provide your Google Cloud project ID and the desired region where you want to create the Pub/Sub topics.
+
+3. Create a file named `main.tf` in your Terraform configuration directory and include the following code:
+
+   ```hcl
+   module "pubsub_topics" {
+     source      = "./pubsub_topics" # Path to the directory containing the module
+     project_id  = "your-project-id" # Replace with your GCP project ID
+     region      = "us-central1"     # Replace with your desired region
+
+     topic_names = [
+       "topic1", "topic2", ..., "topic1000"  # Provide your list of topic names here
+     ]
+   }

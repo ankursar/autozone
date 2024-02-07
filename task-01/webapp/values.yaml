@@ -1,0 +1,16 @@
+replicaCount: 3
+image:
+  repository: anksa/nodejs-webapp
+  tag: v2
+  pullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+  port: 443
+  externalTrafficPolicy: Cluster
+persistence:
+  enabled: true
+  storageClass: standard
+  accessMode: ReadWriteOnce
+  size: 1Gi
+secrets:
+  tlsSecret: webapp-secret
