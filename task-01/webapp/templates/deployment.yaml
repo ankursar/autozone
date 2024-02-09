@@ -48,7 +48,12 @@ spec:
             - name: certs-volume
               mountPath: /certs
               readOnly: true
+            - name: data
+              mountPath: /data
       volumes:
         - name: certs-volume
           secret: 
-            secretName: webapp-secret
+            secretName: {{ .Values.secrets.tlsSecret }}
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ include "webapp.fullname" . }}

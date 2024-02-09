@@ -3,12 +3,11 @@ provider "google" {
   region  = var.region
 }
 
-variable "topic_names" {
-  description = "List of topic names"
-  type        = list(string)
+locals {
+  topic_names = split("\n", file(var.topic_names_file))
 }
 
 resource "google_pubsub_topic" "pubsub_topics" {
-  count = length(var.topic_names)
-  name  = var.topic_names[count.index]
+  count = length(local.topic_names)
+  name  = local.topic_names[count.index]
 }

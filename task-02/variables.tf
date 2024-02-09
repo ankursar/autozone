@@ -10,5 +10,5 @@ variable "region" {
 variable "topic_names_file" {
   description = "Path to the file containing the list of topic names"
   type        = string
-  default     = "../topic_names"
+  default     = "topic_names"
 }
